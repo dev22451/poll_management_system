@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const pollSlice = createSlice({
     name: "polls",
-    initialState: [],
+    initialState: [{ id: '12', name: "car", vote: 0 }, { id: '13', name: "bike", vote: 0 }, { id: '14', name: "bus", vote: 0 }],
     reducers: {
         addPoll: (state, action) => {
             const newTodo = {

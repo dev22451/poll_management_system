@@ -1,10 +1,10 @@
-import ListItem from "./Listitem";
+import UserPage from "./userPage";
 
 const Main = () => {
     return (
         <>
             <div className="container-fluid">
-                <ListItem />
+                <UserPage />
             </div>
         </>
     )

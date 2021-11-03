@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-//import adminReducer from './adminSlice'
 import pollReducer from './pollSlice';
+//import adminReducer from './adminSlice';
 
 export default configureStore({
     reducer: {
-        pools: pollReducer,
+        polls: pollReducer,
+        //admin: adminReducer,
     }
 })

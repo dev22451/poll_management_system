@@ -5,8 +5,8 @@ const PollList = (props) => {
     return (
         <>
             <div className="row justify-content-center">
-                <div className="col-sm-4 bg-dark form-control">
-                    <span className="text-light pt-2">{polls}</span>
+                <div className="col-sm-4 bg-Light form-control my-1">
+                    <span className="text-dark pt-2">{polls}</span>
                     <button
                         className="btn btn-sm mx-2 float-sm-end  " id="btnDelete" >
                         <i

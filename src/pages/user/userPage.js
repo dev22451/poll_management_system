@@ -12,14 +12,18 @@ const UserPage = () => {
                     <span>Status: Voted</span>
 
                 </div>
-                <div className="col-8">
+                <div className="col-8 mt-5">
                     {
                         poll.map((item) => {
+                            console.log();
+
                             return (
                                 <>
+
                                     <List
-                                        poll={item.poll}
-                                        vote={item.vote}
+                                        title={item.title}
+                                        data={item.options}
+
                                     />
                                 </>
                             )

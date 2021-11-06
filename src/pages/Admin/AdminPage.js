@@ -23,7 +23,7 @@ const AdminPage = () => {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-2 bg-dark">
-                        <h1 className="text-light">Admin</h1>
+                        <h1 className="text-light text-center">Admin</h1>
                     </div>
                     <div className="col-10 bg-light">
                         <div className="row justify-content-center">

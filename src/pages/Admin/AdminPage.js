@@ -1,67 +1,46 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addPoll } from './pollSlice';
-import PollList from './pollList';
-const AdminPage = () => {
-    const poll = useSelector((state) => state.polls);
-    const dispatch = useDispatch();
-    const [input, setInput] = useState();
-    const handleInput = (e) => {
-        setInput(e.target.value)
-    };
-    const handleOnSubmit = (e) => {
-        e.preventDefault();
-        dispatch(addPoll({
-            name: input,
-        }))
+import { Route, Switch } from 'react-router';
+import './AdminPage.css';
+import { NavLink } from 'react-router-dom';
+import AddUser from './addUser';
+import AddPoll from './addPoll';
 
-    }
+const AdminPage = () => {
+
     return (
         <>
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-2 bg-dark">
-                        <h1 className="text-light text-center">Admin</h1>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div className="container">
+                    <a className="navbar-brand text-primary fw-bold" href="#">DASHBOARD</a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <NavLink to="/dashboard"><button type="submit" className="btn btn-outline-secondary rounded-pill ms-5 mx-2 fw-bold">AddUser</button></NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to="/dashboard/addpoll"><button type="submit" className="btn btn-outline-secondary rounded-pill mx-2 fw-bold">CreatePoll</button></NavLink>
+                            </li>
+                        </ul>
+                        <form className="d-flex">
+                            <NavLink to="/"> <button className="btn0 " type="submit">Logout</button></NavLink>
+                        </form>
                     </div>
-                    <div className="col-10 bg-light">
-                        <div className="row justify-content-center">
-                            <div className="col-sm-4 bg-secondary mt-5 ">
-                                <form onSubmit={handleOnSubmit}>
-                                    <h1 className="text-center text-light pt-3">Poll List </h1><br />
-                                    <div className="input-group mb-3 px-4">
-                                        <input
-                                            type="text"
-                                            name="todo"
-                                            id="todo"
-                                            onChange={handleInput}
-                                            className="form-control "
-                                        />
-                                        <button type="submit" className="btn btn-primary" >
-                                            <i className="fas fa-plus-square fa-2x" title="Add Items">
-                                            </i>
-                                        </button>
-                                    </div>
-                                </form>
-                                {
-                                    poll.map((item) => {
-                                        return (
-                                            <>
-                                                <PollList
-                                                    polls={item.name}
-                                                />
-                                            </>
-                                        )
-                                    })
-                                }
-                            </div >
-                        </div >
-                    </div>
-
                 </div>
+            </nav>
 
-            </div>
+
+
+            <section className='Content py-5'>
+                <Switch>
+                    <Route exact path='/dashboard' component={AddUser} />
+                    <Route exact path='/dashboard/addpoll' component={AddPoll} />
+
+                </Switch >
+
+            </section >
         </>
     )
 

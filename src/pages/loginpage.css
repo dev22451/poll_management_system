@@ -1,0 +1,17 @@
+*{
+   
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.login{
+    background:url(./images/1900901.jpg)no-repeat;
+    background-size: cover;
+    height: 91.5vh;
+    background-position:50% 50%;
+    width:100%;
+}
+.user{
+    margin-right: 30px;
+}

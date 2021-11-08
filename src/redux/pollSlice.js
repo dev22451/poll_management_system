@@ -2,9 +2,53 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const pollSlice = createSlice({
     name: "polls",
-    initialState: [{ title: 'Rajneesh', options: [{ id: '123', name: 'car', vote: 0 }, { id: "122", name: 'bike', vote: 0 }] },
-    { title: 'Give a Vote', options: [{ id: '12', name: 'Bjp', vote: 0 }, { id: "13", name: 'cong', vote: 0 }] }
-    ],
+    initialState: {
+        pollList: [
+            {
+                id: '111',
+                title: 'Rajneesh',
+                options: [
+                    {
+                        id: '123',
+                        name: 'car',
+                        vote: 0
+                    },
+                    {
+                        id: "122",
+                        name: 'bike',
+                        vote: 0
+                    }],
+                total: 0
+            },
+            {
+                id: '112',
+                title: 'Give a Vote',
+                options: [
+                    { id: '12', name: 'Bjp', vote: 0 },
+                    { id: "13", name: 'cong', vote: 0 }
+                ],
+                total: 0
+            },
+            {
+                id: '112',
+                title: 'Give a Vote',
+                options: [
+                    { id: '12', name: 'Bjp', vote: 0 },
+                    { id: "13", name: 'cong', vote: 0 }
+                ],
+                total: 0
+            },
+            {
+                id: '112',
+                title: 'Give a Vote',
+                options: [
+                    { id: '12', name: 'Bjp', vote: 0 },
+                    { id: "13", name: 'cong', vote: 0 }
+                ],
+                total: 0
+            },
+        ],
+    },
     reducers: {
         addPoll: (state, action) => {
             const newTodo =
@@ -13,24 +57,21 @@ const pollSlice = createSlice({
                 name: action.payload.name,
                 vote: 0
             };
-            state.push(newTodo);
+            state.pollList.push(newTodo);
         },
         addVote: (state, action) => {
-            const Data = state.map((item) => {
-
-                return item.options
-
-            });
-            Data.map((list) => {
-                if (list.id === action.payload.id) {
-                    list.vote = action.payload.vote;
+            state.pollList = state.pollList.map((item) => {
+                if (item.id === action.payload.pollId) {
+                    item.options = item.options.map((instance) => {
+                        if (instance.id === action.payload.optionId) {
+                            instance = { ...instance, vote: instance.vote + 1 }
+                        }
+                        return instance;
+                    });
+                    item.total = item.total + 1
                 }
-            })
-
-
-
-
-
+                return item
+            });
         }
     }
 })

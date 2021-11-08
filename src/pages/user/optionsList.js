@@ -18,12 +18,15 @@ const OptionsList = ({ id, vote, polls }) => {
     }
     return (
         <>
-            <div className="form-control mt-2   d-inline-flex">
-                <span className='fw-bold'>{polls}</span>
-                <span className='badge rounded-pill bg-secondary  vote'>{vote}</span>
-                <button type="button" onClick={handleVote} className="btn btn-success float-end " >Vote</button>
+            <div className=''>
+                <div className="form-control py-3">
+                    <span className='fw-bold'>{polls}</span>
 
+                    <button type="button" onClick={handleVote} className="btn btn-sm btn-success float-end ms-5" >Vote</button>
+                    <span className='badge rounded-pill bg-secondary float-end  me-5 vote'>{vote}</span>
+                </div>
             </div>
+
 
         </>
     )

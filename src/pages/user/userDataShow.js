@@ -3,17 +3,13 @@
 const UserDataShow = () => {
     return (
         <>
-            <div className="card pt-2 bg-light shadow rounded pt-5 mt-5 me-5">
-                <i className="fad fa-user fa-6x"></i>
-                <div className="card-body">
-                    <h5 className="card-title">User Details</h5>
-                    <p className="card-text"> ID: 34645264</p>
-                </div>
-                <ul className="list-group list-group-flush ">
-                    <li className="list-group-item bg-light">Name: Guest</li>
-                    {/* <li className="list-group-item">A second item</li>
+            <div className=" pt-2 bg-light d-inline-flex">
+                <i className="fad fa-user fa-5x py-1"></i>
+
+                <p className="fw-bold px-5 mt-3"> ID: 34645264</p>
+                <span className="fw-bold ps-5 mt-3">User: Guest</span>
+                {/* <li className="list-group-item">A second item</li>
                     <li className="list-group-item">A third item</li> */}
-                </ul>
             </div>
 
         </>

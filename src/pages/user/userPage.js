@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import List from './Listitem';
-// import { NavLink } from 'react-router-dom';
 import './userPage.css';
 import UserDataShow from './userDataShow';
 
@@ -9,12 +8,15 @@ const UserPage = () => {
     console.log(poll)
     return (
         <>
-            <div className="row">
-                <div className="col-4 text-center mt-5">
-                    <UserDataShow />
-
+            <div className='container'>
+                <div className="row bg-light">
+                    <div className="col-sm-12">
+                        <UserDataShow />
+                    </div>
                 </div>
-                <div className="col-8 mt-2">
+            </div>
+            <div className='row'>
+                <div className="col-12 mt-3">
                     <div className='row'>
                         {
                             poll.map((item) => {

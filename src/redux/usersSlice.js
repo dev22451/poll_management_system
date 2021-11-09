@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
     name: "users",
-    initialState: [{ name: 'Rajneesh', email: 'raj@gmail.com', password: 'admin123' }],
+    initialState: { id: '123455', name: 'Rajneesh', email: 'raj@gmail.com', password: 'user123' },
     reducers: {
         matchAdmin: (state, action) => {
 
             state.map((item) => {
-                if (item.name === action.payload.id && item.password === action.payload.password) {
-                    item.name = action.payload.name;
+                if (item.id === action.payload.id && item.password === action.payload.password) {
+                    return true
                 } return null
             });
         },

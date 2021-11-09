@@ -1,18 +1,40 @@
 import { NavLink } from 'react-router-dom';
-//import { useState } from 'react';
+//import { Redirect } from 'react-router';
+import { useState } from 'react';
+//import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
-import './loginpage.css';
-const Login = () => {
-    //const [admin, setAdmin] = useState({ id: '', password: '' })
-    const adminData = useSelector((state) => state.admin);
-    console.log(adminData);
 
-    // const handleAdminId = (e) => {
-    //     setAdmin({ id: e.target.value })
-    // }
-    // const handleAdminPass = (e) => {
-    //     setAdmin({ password: e.target.value })
-    // }
+import './loginpage.css';
+const Login = (props) => {
+    console.log(props)
+    const [id, setId] = useState()
+    const [pass, setPass] = useState()
+    const userData = useSelector((state) => state.users);
+
+
+    const handleUserId = (e) => {
+
+        setId(e.target.value)
+    }
+    const handleUserPass = (e) => {
+        setPass(e.target.value)
+    }
+
+
+    const handleClick = () => {
+        if (id === "12345" && pass === "admin123") {
+            props.history.push('/dashboard');
+        } else if (userData.id === id && userData.password === pass) {
+            props.history.push('/user')
+
+        }
+        else {
+            alert('Invalid User and Password')
+        }
+
+
+    }
+
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,28 +60,27 @@ const Login = () => {
                     <div className="row justify-content-center pt-5 ">
                         <div className="col-sm-4 mt-5 bg-light pt-5 pb-3 shadow rounded">
                             <h1 className='text-center mb-4'>Login</h1>
-                            <form>
+                            <form >
 
                                 <div className="px-2 input-group">
-                                    <div type="submit" className="btn btn-primary" >
+                                    <div className="btn btn-primary" >
                                         <i className="fad fa-user">
                                         </i>
                                     </div>
-                                    <input type='text' className="form-control input-field" placeholder='Enter Id' />
+                                    <input type='text' className="form-control input-field" placeholder='Enter Id' onChange={handleUserId} value={id} name="userId" />
                                 </div>
                                 <div className="px-2 pt-3 input-group">
-                                    <div type="submit" className="btn btn-primary" >
+                                    <div className="btn btn-primary" >
                                         <i className="fad fa-key">
                                         </i>
                                     </div>
 
-                                    <input type='password' className="form-control" placeholder='Enter Password' />
+                                    <input type='password' className="form-control" placeholder='Enter Password' onChange={handleUserPass} value={pass} name="password" /><br />
 
                                 </div>
 
                                 <div className=" float-end">
-                                    <NavLink to="/dashboard"><button type="submit" className="btn btn-primary mt-3 me-2 m-auto"><i className="fad fa-sign-in pe-1"></i>LOGIN</button></NavLink>
-
+                                    <input type="submit" className="btn btn-primary mt-3 me-2 m-auto" value="Login" onClick={handleClick} />
                                 </div>
                             </form>
                         </div>
